@@ -9,6 +9,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         //questionFactory?.delegate = self
         //questionFactory = QuestionFactory()
         questionFactory?.requestNextQuestion()
+        currentAlert.delegate = self
     }
     // MARK: - QuestionFactoryDelegate
     func didReceiveNextQuestion(question: QuizQuestion?) {
@@ -22,6 +23,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             self?.show(quiz: viewModel)
         }
     }
+    private var currentAlert: AlertPresenterProtocol = AlertPresenter()
     
     private var questionFactory: QuestionFactoryProtocol?
     
